@@ -1,8 +1,7 @@
 language: java
 
 before_install:
-  - mvn clean package -Dmaven.test.skip=true
-  - mvn spring-boot:build-image
+  - mvn spring-boot:build-image -Dmaven.test.skip=true
 script:
   - docker-compose build
 before_deploy:
