@@ -37,6 +37,7 @@ public class ProdutoController {
         return new ResponseEntity<List<ProdutoModel>>(lista , HttpStatus.OK);
     }
 
+
     @GetMapping("{id}")
     public ResponseEntity<ProdutoModel> getProduto(@PathVariable("id") Long id){
         Optional<ProdutoModel> produto = produtoRepository.findById(id);
