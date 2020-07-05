@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+
+  postgres:
+    image: postgres
+    ports: 
+      - "5432:5432"
+    environment:
+      - "POSTGRES_PASSWORD=postgres"
+    networks:
+      - post-boot-network
+    
+  simplerestfull:
+    image: gabrielrps/simplerestfull:3.0.0
+    ports:
+      - "8080:8080"
+    networks:
+      - post-boot-network
+    depends_on:
+      - postgres
+    
+networks:
+    post-boot-network:
+        driver: bridge
+        
+        
+ 
