@@ -1,0 +1,19 @@
+language: java
+jdk:
+  - oraclejdk8
+before_install:
+  - sudo apt-get update
+  - mvn clean package
+script:
+  - docker-compose build
+before_deploy:
+  echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker image tag docker.io/library/simplerestfull:1.0.0 gabrielrps/simplerestfull:latest
+    docker push gabrielrps/simplerestfull:latest
+  on:
+    branch: master
+notifications:
+  email: false
