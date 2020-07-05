@@ -9,8 +9,8 @@ before_deploy:
 deploy:
   provider: script
   script:
-    docker image tag simplerestfull:1.0.0 gabrielrps/simplerestfull:latest
-    docker push gabrielrps/simplerestfull:latest
+    docker image tag simplerestfull:1.0.0 gabrielrps/simplerestfull:latest;
+    docker push gabrielrps/simplerestfull:latest;
   on:
     branch: master
 notifications:
